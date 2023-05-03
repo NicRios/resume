@@ -1,0 +1,630 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Nick Rios | Solution Architect</title>
+    <meta name="description" content="I'm a Solution Architect based in San Francisco, CA.
+                Avid self-learner, proactive, organized and dedicated to everything I do.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon"> 
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" /> 
+    <!-- css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+
+   <!-- <script>
+
+        jQuery.noConflict();
+        (function($) {
+            $(window).on('load', function() { // makes sure the whole site is loaded
+                $('#myLogo').bind('mouseover', function(event) {
+                    var $anchor = $(this);
+                    var classString = 'animating squish single-iteration';
+                    $anchor.addClass(classString);
+
+                });
+                $('#myLogo').bind('mouseout', function(event) {
+                    var $anchor = $(this);
+                    var classString = 'animating squish single-iteration';
+                    $anchor.removeClass(classString);
+
+                });
+        });
+    })(jQuery);
+  
+    </script> -->
+</head>
+
+<body>
+    <!-- START PRELOADER -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- END PRELOADER -->
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><span class="fas fa-arrow-up" aria-hidden="true"></span></a>
+    <!-- navigation -->
+    <!-- start Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for mobile display -->
+            <div class="navbar-header">
+                <a id="myLogo" name = "logo" class="logo navbar-brand"
+                href="#">
+                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 718.58 718.58" transform ="scale(-1, 1)" enable-background="new 0 0 425.8 425.8"><circle id="svg-circle"fill="#333" cx="362.9" cy="362.9" r="278.8"/><g fill="#fff"><polygon class="cls-2" points="289.02 196.89 196.91 196.89 196.91 453.43 289.02 361.31 289.02 196.89"/><polygon class="cls-3" points="426.45 518.57 518.56 518.57 518.56 262.03 426.45 354.15 426.45 518.57"/><polygon class="cls-4" points="518.56 196.89 453.43 196.89 196.91 453.44 196.91 518.58 262.04 518.58 518.56 262.03 518.56 196.89"/></g></svg>
+                </a>
+                <!-- <a class="navbar-brand" href="#about">
+                    <img alt="Nick Rios" class="navbar-brand" src="img/marina_marques_logo.png">
+                </a> -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ResponsiveNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="ResponsiveNav">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about-me" class="page-scroll">ABOUT</a></li>
+                    <li><a href="#experience" class="page-scroll">EXPERIENCE</a></li>
+                   <!-- <li><a href="#services" class="page-scroll">SERVICES</a></li>
+                    <li><a href="#appearances" class="page-scroll">APPEARANCES</a></li> -->
+                    <li><a href="#contact" class="page-scroll">CONTACT</a></li>
+                </ul>
+            </div>
+            <!-- end collapse -->
+        </div>
+        <!-- end container fluid -->
+    </nav>
+    <!-- end navigation -->
+    <!-- intro header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <!-- start typer hello  -->
+                        <div class="brand-heading">
+                            <span class="txt-rotate" data-period="100" data-rotate='[ "Hello,", "你好,", "Hola," ]'></span>
+                        </div>
+                        <!-- end typer hello -->
+                        <p class="intro-text">my name is Nick Rios.
+                            <br> I'm a <strong>Solution Architect</strong> based in the beautiful city of <span class="city">San Francisco</span>, CA.</p>
+                        <!-- start mouse wrap -->
+                        <div class="mouse-warp">
+                            <a href="#mouse-here" class="page-scroll">
+                                <div class="mouse">
+                                    <div class="scroll"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- end mouse wrap -->
+                    </div>
+                    <!-- end column wrapping -->
+                </div>
+                <!-- end row header -->
+            </div>
+            <!-- end container header -->
+        </div>
+        <!-- end intro body -->
+    </header>
+    <!-- end intro header -->
+    <div id="mouse-here"></div>
+    <!-- only for mouse to fall before the start of the section -->
+    <!-- start about me -->
+    <section id="about-me">
+        <div class="container">
+            <div class="row">
+                <h2>ABOUT</h2>
+                <div class="col-lg-6 about-intro">
+                    <div class="about-inner">
+                        <div class="about-ct">
+                            <img src="{{ url_for('static', filename='images/hanoi.jpg') }}" alt="Nick Rios" class="img-responsive">
+                            <div class="textbox-about hidden-xs">
+                                <div class="btn button-social">
+                                    <!-- <a href="http://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fab fa-codepen" aria-hidden="true"></span></a> -->
+                                    <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" alt="LinkedIn profile" target="_blank"><span class="fab fa-linkedin" aria-hidden="true"></span></a>
+                                    <a href="https://www.fiverr.com/nicolasrios272" target="_blank" alt="Fiverr profile"><span class="fa fa-user-circle" aria-hidden="true"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-intro-text">
+                    <p>As a <span>Solution Architect</span> (fancy name for tech Swiss army knife), I'm passionate about designing and implementing innovative solutions that have real impact.
+                        <br><br> My favorite work experiences have given me the opportunitity to collaborate with people in all walks of life - tackling challenges and constantly adapting to new technologies and approaches. From streamlining business operations by improving site reliability and speed, increasing engagement and sales by leveraging new technologies, or saving time and resources by introducing automation, seeing the impact of my work on a company's success provides such an incredible feeling of accomplishment. 
+                        <br><br> Here's to doing work you can stand behind! <span class="fas fa-beer" aria-hidden="true"></span></p>
+                    <div class="button-group">
+                        <div class="text">Download CV</div>
+                        <div class="icon-cv"><a href="{{ url_for('static', filename='assets/Nick-Rios-Resume.pdf') }}" alt="Nick Rios CV" target="_blank" download="Nick-Rios-Resume.pdf"><span class="fas fa-arrow-circle-down" aria-hidden="true"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row about -->
+        </div>
+        <!-- end container about -->
+        <!-- start count stats -->
+        <section id="counter-stats">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 stats">
+                        <span class="fas fa-code" aria-hidden="true"></span>
+                        <div class="counter" data-count="900000">0</div>
+                        <h5>Lines of code</h5>
+                    </div>
+                    <div class="col-lg-3 stats">
+                        <span class="fas fa-check" aria-hidden="true"></span>
+                        <div class="counter" data-count="127">0</div>
+                        <h5>Projects done</h5>
+                    </div>
+                    <div class="col-lg-3 stats">
+                        <span class="fas fa-user" aria-hidden="true"></span>
+                        <div class="counter" data-count="49">0</div>
+                        <h5>Happy clients</h5>
+                    </div>
+                    <div class="col-lg-3 stats">
+                        <span class="fas fa-coffee" aria-hidden="true"></span>
+                        <div class="counter" data-count="999">0</div>
+                        <h5>Cups of coffee</h5>
+                    </div>
+                </div>
+                <!-- end row counter stats -->
+            </div>
+            <!-- end container counter stats -->
+        </section>
+        <!-- end cont stats -->
+    </section>
+    <!-- end about me -->
+    <!-- start work experience -->
+    <section id="experience">
+        <div class="container">
+            <h2>EXPERIENCE</h2>
+            <div class="experience-ct">
+                <div class="row">
+                    <div class="col-md-6 timeline-label">
+                        <h4>key areas</h4>
+                        <p>Web Development, Deploying Containerized Applications, API and Database Integrations.</p>
+                        <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" alt="LinkedIn profile" target="_blank">
+                            <div class="button-group-li">
+                                <div class="text-timeline">View on LinkedIn</div>
+                                <div class="icon-li"><span class="fab fa-linkedin" aria-hidden="true"></span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 timeline col-exp">
+                        <div class="timeline-year">
+                            <time datetime="2023">2023</time>
+                            <div class="timeline-experience">
+                                <span class="timeline-circle"></span>
+                                <div class="timeline-experience-img"><img src="{{ url_for('static', filename='images/tonic-logo.png') }}" alt="Tonic.ai"></div>
+                                <div class="timeline-experience-info clear-after">
+                                    <h5>Tonic.ai</h5>
+                                    <div class="timeline-role">Solution Architect</div>
+                                    <p>May 2022 - Present</p>
+                                </div>
+                                <!-- experience-info -->
+                            </div>
+
+                            <!-- experience -->
+                        </div>
+                        <!-- year -->
+                        <div class="timeline-year timeline-year1">
+                            <time datetime="2021">2021</time>
+                            <div class="timeline-experience">
+                                <span class="timeline-circle"></span>
+                                <div class="timeline-experience-img"><img src="{{ url_for('static', filename='images/clearbit-logo.png') }}" alt="Clearbit"></div>
+                                <div class="timeline-experience-info clear-after">
+                                    <h5>Clearbit</h5>
+                                    <div class="timeline-role">Senior Technical Support Engineer</div>
+                                    <p>January 2021 - May 2022</p>
+                                </div>
+                                <!-- experience-info -->
+                            </div>
+                            
+                            <!-- experience -->
+                            <time datetime="2019">2019</time>
+                            <div class="timeline-experience">
+                                <span class="timeline-circle"></span>
+                                <div class="timeline-experience-img"><img src="{{ url_for('static', filename='images/talkdesk-logo.png') }}" alt="Talkdesk"></div>
+                                <div class="timeline-experience-info clear-after">
+                                    <h5>Talkdesk</h5>
+                                    <div class="timeline-role">Integrations Engineer</div>
+                                    <p>July 2019 - January 2021</p>
+                                </div>
+                                <!-- experience-info -->
+                            </div>
+                            <!-- experience -->
+                        </div>
+                         <!-- experience -->
+                            <time datetime="2015">2015</time>
+                            <div class="timeline-experience">
+                                <span class="timeline-circle"></span>
+                                <div class="timeline-experience-img"><img src="{{ url_for('static', filename='images/ucla-logo.png') }}" alt="UCLA"></div>
+                                <div class="timeline-experience-info clear-after">
+                                    <h5>UCLA</h5>
+                                    <div class="timeline-role">Student - Electrical and Computer Engineering</div>
+                                    <p>August 2015 - June 2019</p>
+                                </div>
+                                <!-- experience-info -->
+                            </div>
+                            <!-- experience -->
+                        </div>
+                        <!-- year -->
+                    </div>
+                </div>
+                <!-- end row of two columns -->
+            </div>
+            <!-- end experience container of two columns -->
+        </div>
+        <!-- end container experience -->
+    </section>
+    <!-- end work experience -->
+    <!-- start work portfolio -->
+    <section id="portfolio">
+        <div class="container-fluid portfolio-ct">
+            <h2>Strengths</h2>
+            <div class="row">
+                <!-- start portfolio item -->
+                <div class="col-sm-6 col-md-4 grid-portfolio">
+                    <div class="portfolio-item-ct">
+                        <div class="thumbnail">
+                            <img src="{{ url_for('static', filename='images/cloud.jpg') }}" alt="Portfolio" class="img-responsive">
+                            <div class="textbox-portfolio">
+                                <!-- <div class="button-weblink">
+                                    <a  alt="Portfolio"><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
+                                </div> --> 
+                            </div>
+                        </div>
+                        <div class="caption portfolio-details">
+                            <h3>Cloud Services</h3>
+                            <p>I help businesses securely store and access <br>
+                                their data and applications on the cloud.
+                            </p>
+                            <ul class="portfolio-tags">
+                                <li class="portfolio-tag">AWS, AZURE, & GCP</li>
+                                <li class="portfolio-tag">CONTAINERS</li>
+                                <li class="portfolio-tag">CI/CD</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end portfolio item -->
+                <!-- start portfolio item -->
+                <div class="col-sm-6 col-md-4 grid-portfolio">
+                    <div class="portfolio-item-ct">
+                        <div class="thumbnail">
+                            <img src="{{ url_for('static', filename='images/webdev.jpg') }}" alt="Portfolio" class="img-responsive">
+                            <div class="textbox-portfolio">
+                                <!-- <div class="button-weblink">
+                                    <a  alt="Portfolio "><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="caption portfolio-details">
+                            <h3>Web Development</h3>
+                            <p>Creating and designing custom websites, <br>
+                                middleware and integrations for seamless UX</p>
+                            <ul class="portfolio-tags">
+                                <li class="portfolio-tag">JAVASCRIPT</li>
+                                <li class="portfolio-tag">PYTHON</li>
+                                <li class="portfolio-tag">JAVA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end portfolio item -->
+                <!-- start portfolio item -->
+                <div class="col-sm-6 col-md-4 grid-portfolio">
+                    <div class="portfolio-item-ct">
+                        <div class="thumbnail">
+                            <img src="{{ url_for('static', filename='images/integrate.jpg') }}" alt="Portfolio" class="img-responsive">
+                            <div class="textbox-portfolio">
+                               <!--  <div class="button-weblink">
+                                    <a  alt="Portfolio"><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
+                                </div> --> 
+                            </div>
+                        </div>
+                        <div class="caption portfolio-details">
+                            <h3>Automation and Integration</h3>
+                            <p>Experience with workflow optimization, database <br>integrations and many major software platforms.
+                            </p>
+                            <ul class="portfolio-tags">
+                                <li class="portfolio-tag">CRM</li>
+                                <li class="portfolio-tag">ETL</li>
+                                <li class="portfolio-tag">ODBC</li>
+                                <li class="portfolio-tag">APIs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end portfolio item -->
+
+        </div>
+        <!-- end container portfolio -->
+    </section>
+    <!-- end work portfolio -->
+    <!-- start services -->
+   <!-- <section id="services">
+        <div class="container">
+            <h2>WHAT DO YOU NEED?</h2>
+            <div class="row"> -->
+                <!-- <div class="ct-services">
+                    <div class="col-md-4 services-item">
+                        <div class="rotate">
+                            <span class="fas fa-code" aria-hidden="true"></span>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Development of responsive websites, cross-browser and cross-platform testing.</p>
+                    </div>
+                    <div class="col-md-4 services-item">
+                        <div class="rotate">
+                            <span class="fab fa-wordpress fa-wrapper" aria-hidden="true"></span>
+                        </div>
+                        <h3>Wordpress Development</h3>
+                        <p>Custom development (website, theme & plugin), hosting and maintenance.</p>
+                    </div>
+                    <div class="col-md-4 services-item">
+                        <div class="rotate">
+                            <span class="fas fa-chart-line" aria-hidden="true"></span>
+                        </div>
+                        <h3>Search Engine Optimization</h3>
+                        <p>Increase your visibility across all major search engines & local search with SEO techniques.</p>
+                    </div>
+                </div> -->
+                <!-- end row of services -->
+           <!--  </div> -->
+            <!-- end row services section -->
+       <!--  </div> -->
+        <!-- end div services section -->
+    <!-- </section> -->
+    <!-- end services -->
+    <!-- start appearances -->
+    <!--
+    <section id="appearances">
+        <div class="container-fluid appearances-ct">
+            <h2>APPEARANCES</h2>
+            <div class="row">
+            -->
+                <!-- start appearance item -->
+                <!--
+                <div class="col-sm-6 col-md-4 grid-appearances">
+                    <div class="appearances-item-ct">
+                        <div class="thumbnail">
+                            <img src="img/marina_marques_flag.png" alt="Success Case - FLAG Lisboa" class="img-responsive">
+                            <div class="textbox-appearances js-flag">
+                                <div id="video" class="lightbox">
+                                    <div class="lightbox-container">
+                                        <div class="lightbox-content">
+                                            <div class="video-container">
+                                                <iframe id="youtube" width="960" height="540" src="https://www.tonic.ai/blog/how-to-choose-a-service-on-amazon-web-services-aws" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="caption appearances-details">
+                            <h3>SUCCESS CASE - FLAG</h3>
+                            <p>I was invited by FLAG (the school where I finished my Web and Mobile Development course with an average of 18(/20)) to take part in their publicity campaign.</p>
+                            <p>The campaign was focused on success cases - print (outdoors in the Lisbon subway) and digital (video).</p>
+                            <p>I was chosen to give my testimonial regarding my experience as a front-end developer.</p>
+                        </div>
+                    </div>
+                </div>
+            -->
+                <!-- end appearance item -->
+                <!-- start appearance item -->
+                <!--
+                <div class="col-sm-6 col-md-4 grid-appearances">
+                    <div class="appearances-item-ct">
+                        <div class="thumbnail">
+                            <img src="img/marina_marques_sherpany.png" alt="What is your passion? Sherpany" class="img-responsive">
+                            <div class="textbox-appearances js-sherpany">
+                                <div id="video" class="lightbox">
+                                    <div class="lightbox-container">
+                                        <div class="lightbox-content">
+                                            <div class="video-container">
+                                                <iframe id="youtubeSherpany" width="960" height="540" src="https://www.youtube.com/embed/sBWMtmqGkIQ?start=143" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="caption appearances-details">
+                            <h3>WHAT IS YOUR PASSION? - SHERPANY</h3>
+                            <p>I was invited by Sherpany to give my feedback on how it feels to be a part of this family.</p>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- end appearance item -->
+                <!-- start appearance item -->
+                <!--
+                <div class="col-sm-6 col-md-4 grid-appearances">
+                    <div class="appearances-item-ct">
+                        <div class="thumbnail">
+                            <a href="https://www.flag.pt/webcast/flagtalks-ssoas-da-casa-ep12-com-marina-marques/" target="_blank"><img src="img/marina_marques_flag_talks.png" alt="FLAGTALKS ´SSOAS DA CASA" class="img-responsive"></a>
+                        </div>
+                        <div class="caption appearances-details">
+                            <h3>FLAGTALKS - ´SSOAS DA CASA</h3>
+                            <p>I was invited by FLAG to share my experience as a student in one of their courses and to discuss the necessary skills to thrive as a front-end developer.</p>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- end appearance item -->
+                <!--
+            </div>
+        -->
+            <!-- end row appearances -->
+            <!--
+        </div>
+    -->
+        <!-- end container appearances -->
+        <!--
+    </section>
+-->
+    <!-- end appearances -->
+    <!-- start testimionals -->
+    <section id="testimionals">
+        <div class="testimionals-bg">
+            <div class="container testimionals-bg-opacity">
+                <h2>WHAT ASSOCIATES HAVE SAID</h2>
+                <div><span class="fas fa-quote-left quotes" aria-hidden="true"></span>
+                </div>
+                <div id="slider-testimionals" class="carousel slide" data-ride="carousel">
+                    <!-- indicators dot nav -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-testimionals" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-testimionals" data-slide-to="1"></li>
+                        <li data-target="#slider-testimionals" data-slide-to="2"></li>
+                        <li data-target="#slider-testimionals" data-slide-to="3"></li>
+                    </ol>
+                    <!-- wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <!-- start first testimional -->
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="carousel-caption">
+                                        <p>Nick is a gem! He's always ready to hop on a call and resolve my problems in record time.</p>
+                                        <p class="client">Sandra, DevOps department - Client</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end first testimional -->
+                        <!-- start second testimional -->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="carousel-caption">
+                                        <p>Quick as lightning with robust solutions.</p>
+                                        <p class="client">Adam, Solutions department - Box</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end second testimional -->
+                        <!-- start third testimional -->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="carousel-caption">
+                                        <p>He shows real commitment and demonstrates entrepreneurship skills as well as innovation abilities.</p>
+                                        <p class="client">Previn, Engineering department - Cisco</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end third testimional -->
+                        <!-- start fourth and last testimional -->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="carousel-caption">
+                                        <p>He doesn't give up until he finds a solution for what seems to be impossible.</p>
+                                        <p class="client">Kevin, Manager - Talkdesk</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end fourth and last testimional -->
+                    </div>
+                    <!-- end carousel -->
+                </div>
+                <!-- end slider bootstrap -->
+            </div>
+        </div>
+        <!-- end div container testimionals -->
+    </section>
+    <!-- end testimionals -->
+    <!-- start footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <h2>CONTACT</h2>
+                <p class="js-email" data-tooltip="Click to copy to clipboard!">You can contact me at: <span>n.rios1997@gmail.com</span></p>
+                <br>
+                <div class="social">
+                   <!--  <a href="http://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fab fa-codepen" aria-hidden="true"></span></a> -->
+                    <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" alt="LinkedIn profile"><span class="fab fa-linkedin" aria-hidden="true" </i> </a> <a href="https://www.fiverr.com/nicolasrios272" target="_blank" alt="Fiverr profile"><span class="fa fa-user-circle" aria-hidden="true"></span></a> 
+                </div>
+                <p id="copyright"></p>
+            </div>
+            <!-- end row contact -->
+        </div>
+        <!-- end container footer section -->
+    </footer>
+    <!-- end footer -->
+    <script src="{{url_for('static', filename = 'js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/jquery.easing.min.js')}}"></script>
+
+    <script src="{{url_for('static', filename = 'js/script.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+   <!-- Start Bouncy Logo -->
+
+   <script>
+
+        jQuery.noConflict();
+        (function($) {
+            $(window).on('load', function() { // makes sure the whole site is loaded
+                $('#myLogo').bind('mouseover', function(event) {
+                    var $anchor = $(this);
+                    var classString = 'animating squish single-iteration';
+                    $anchor.addClass(classString);
+
+                });
+                $('#myLogo').bind('mouseout', function(event) {
+                    var $anchor = $(this);
+                    var classString = 'animating squish single-iteration';
+                    $anchor.removeClass(classString);
+
+                });
+        });
+    })(jQuery);
+  
+    </script>
+     <!-- END BOUNCY LOGO -->
+    <!-- Preloader -->
+    <script type="text/javascript">
+    jQuery.noConflict();
+    (function($) {
+        $(window).on('load', function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(200).fadeOut('slow'); // will fade out the white DIV that covers the website.
+        });
+    })(jQuery);
+    </script>
+    <!-- end Preloader -->
+    <!-- hello typer start -->
+    <script type="text/javascript">
+    window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 10px solid #40E0D0 }";
+        document.body.appendChild(css);
+    };
+    </script>
+    
+    <!-- hello typer end -->
+
+</body>
+
+</html>
