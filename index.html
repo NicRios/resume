@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -6,624 +5,1201 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Nick Rios | Solution Architect</title>
-    <meta name="description" content="I'm a Solution Architect based in San Francisco, CA.
-                Avid self-learner, proactive, organized and dedicated to everything I do.">
+    <meta name="description"
+        content="Solution Architect based in Oahu, Hawaii. Building Spectre AI. Previously Tonic.ai, Clearbit, Talkdesk.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- icon -->
-    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon"> 
-    <link rel="icon" type="image/png" href="static/images/favicon.png" /> 
-    <!-- css -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700">
+    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700;900&display=swap">
     <link rel="stylesheet" href="static/css/normalize.css">
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/style.css">   
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-   <!-- <script>
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #1a1a1a;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-        jQuery.noConflict();
-        (function($) {
-            $(window).on('load', function() { // makes sure the whole site is loaded
-                $('#myLogo').bind('mouseover', function(event) {
-                    var $anchor = $(this);
-                    var classString = 'animating squish single-iteration';
-                    $anchor.addClass(classString);
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #008080;
+            margin: 0 0 32px;
+        }
 
-                });
-                $('#myLogo').bind('mouseout', function(event) {
-                    var $anchor = $(this);
-                    var classString = 'animating squish single-iteration';
-                    $anchor.removeClass(classString);
+        a {
+            text-decoration: none;
+        }
 
-                });
-        });
-    })(jQuery);
-  
-    </script> -->
+        /* ── Scroll to top ── */
+        #return-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(0, 128, 128, 0.85);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            z-index: 999;
+            transition: background 0.2s ease;
+        }
+
+        #return-to-top:hover {
+            background: #008080;
+        }
+
+        /* ── Navigation ── */
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+            background: #008080;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .topnav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .topnav-brand svg {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .topnav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .topnav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .topnav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #40E0D0;
+            transition: width 0.25s ease;
+        }
+
+        .topnav-links a:hover {
+            color: #fff;
+        }
+
+        .topnav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile nav */
+        .topnav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .topnav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 767px) {
+            .topnav {
+                padding: 0 20px;
+            }
+
+            .topnav-toggle {
+                display: flex;
+            }
+
+            .topnav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #006666;
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 0;
+            }
+
+            .topnav-links.open {
+                display: flex;
+            }
+
+            .topnav-links li {
+                width: 100%;
+            }
+
+            .topnav-links a {
+                display: block;
+                padding: 12px 24px;
+                letter-spacing: 1px;
+            }
+
+            .topnav-links a::after {
+                display: none;
+            }
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            background: url(static/images/halong.jpeg) center center / cover no-repeat;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.58);
+        }
+
+        .hero-body {
+            position: relative;
+            z-index: 1;
+            padding: 100px 40px 60px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-greeting {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 90px;
+            font-weight: 900;
+            color: #40E0D0;
+            line-height: 1;
+            margin: 0 0 12px;
+        }
+
+        .hero-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 16px;
+            line-height: 1.1;
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 0 40px;
+            font-weight: 400;
+        }
+
+        .hero-sub strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .hero-location {
+            display: inline-block;
+            background: #40E0D0;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 3px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-teal {
+            background: #008080;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #008080;
+        }
+
+        .btn-primary-teal:hover {
+            background: #006666;
+            border-color: #006666;
+            color: #fff;
+        }
+
+        .btn-outline-teal {
+            background: transparent;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline-teal:hover {
+            border-color: #40E0D0;
+            color: #40E0D0;
+        }
+
+        .scroll-hint {
+            margin-top: 60px;
+            opacity: 0.45;
+        }
+
+        .scroll-hint .mouse {
+            width: 24px;
+            height: 42px;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-hint .scroll {
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 7px;
+            animation: scrollAnim 1.4s ease-out infinite;
+        }
+
+        @keyframes scrollAnim {
+            0% {
+                top: 7px;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                top: 24px;
+                opacity: 0.5;
+            }
+
+            100% {
+                top: 30px;
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-greeting {
+                font-size: 60px;
+            }
+
+            .hero-name {
+                font-size: 36px;
+            }
+
+            .hero-body {
+                padding: 90px 24px 48px;
+            }
+        }
+
+        /* ── Sections shared ── */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section.alt {
+            background: #f7fffe;
+        }
+
+        .container-sm {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 767px) {
+            .container-sm {
+                padding: 0 24px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* ── About ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .about-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 20px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 767px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .about-photo {
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+            filter: grayscale(10%);
+            margin-top: 30px;
+        }
+
+        .about-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .about-social a {
+            color: #008080;
+            font-size: 22px;
+            transition: color 0.2s;
+        }
+
+        .about-social a:hover {
+            color: #40E0D0;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin: 0 0 16px;
+        }
+
+        .about-text p:last-of-type {
+            margin-bottom: 28px;
+        }
+
+        .about-text em {
+            font-style: normal;
+            color: #008080;
+            font-weight: 600;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #008080;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 11px 24px;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+
+        .btn-download:hover {
+            background: #006666;
+            color: #fff;
+        }
+
+        /* ── Experience ── */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            border-left: 2px solid #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 44px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -37px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid #40E0D0;
+            background: #fff;
+        }
+
+        .timeline-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-company {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 3px;
+        }
+
+        .timeline-role {
+            font-size: 15px;
+            font-weight: 600;
+            color: #008080;
+            margin: 0 0 4px;
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            color: #888;
+            margin: 0;
+        }
+
+        /* ── Exp + Stack side-by-side ── */
+        .exp-stack-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: stretch;
+        }
+
+        .exp-col {
+            padding: 48px;
+        }
+
+        /* ── Runbooks ── */
+        .runbooks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 767px) {
+            .runbooks-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .runbook-card {
+            border: 1.5px solid #e8f8f7;
+            border-radius: 4px;
+            padding: 28px 24px;
+            background: #fff;
+        }
+
+        .runbook-icon {
+            font-size: 28px;
+            color: #40E0D0;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .runbook-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 8px;
+        }
+
+        .runbook-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Stack / Skills ── */
+        .stack-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .stack-cat-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #008080;
+            margin: 0 0 12px;
+        }
+
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 3px;
+            border: 1.5px solid #40E0D0;
+            color: #008080;
+            background: #f0fdfc;
+        }
+
+        /* ── Projects ── */
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 128, 128, 0.12);
+        }
+
+        @media (max-width: 767px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-card-visual {
+            background: linear-gradient(135deg, #008080 0%, #40E0D0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            font-size: 80px;
+            padding: 40px;
+        }
+
+        .project-card-body {
+            background: #fff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-card-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #40E0D0;
+            margin: 0 0 10px;
+        }
+
+        .project-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 12px;
+        }
+
+        .project-card-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0 0 24px;
+        }
+
+        .project-card-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .chip {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            background: #f0fdfc;
+            border: 1px solid #40E0D0;
+            color: #008080;
+        }
+
+        .btn-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #008080;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: gap 0.2s;
+        }
+
+        .btn-card-link:hover {
+            gap: 12px;
+            color: #008080;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials-section {
+            background: url(static/images/oahu.jpg) center center / cover no-repeat;
+            position: relative;
+        }
+
+        .testimonials-overlay {
+            background: rgba(0, 20, 30, 0.78);
+            padding: 90px 0;
+        }
+
+        .testimonials-section h2 {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card .quote-icon {
+            color: #40E0D0;
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .testimonial-card p {
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0 0 16px;
+            font-style: italic;
+        }
+
+        .testimonial-card .attribution {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            font-style: normal;
+        }
+
+        /* ── Contact / Footer ── */
+        .footer-section {
+            padding: 80px 0 60px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer-section h2 {
+            display: inline-block;
+        }
+
+        .footer-email {
+            font-size: 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 32px;
+            display: block;
+        }
+
+        .footer-email:hover {
+            color: #008080;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .footer-social a {
+            color: #888;
+            font-size: 24px;
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: #008080;
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        /* ── Txt rotate cursor ── */
+        .txt-rotate>.wrap {
+            border-right: 8px solid #40E0D0;
+        }
+
+        @media (max-width: 900px) {
+            .exp-stack-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- START PRELOADER -->
-    <div id="preloader">
-        <div id="status">&nbsp;</div>
-    </div>
-    <!-- END PRELOADER -->
+
     <!-- Return to Top -->
-    <a href="javascript:" id="return-to-top"><span class="fas fa-arrow-up" aria-hidden="true"></span></a>
-    <!-- navigation -->
-    <!-- start Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for mobile display -->
-            <div class="navbar-header">
-                <a id="myLogo" name = "logo" class="logo navbar-brand"
-                href="#">
-                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 718.58 718.58" transform ="scale(-1, 1)" enable-background="new 0 0 425.8 425.8"><circle id="svg-circle"fill="#333" cx="362.9" cy="362.9" r="278.8"/><g fill="#fff"><polygon class="cls-2" points="289.02 196.89 196.91 196.89 196.91 453.43 289.02 361.31 289.02 196.89"/><polygon class="cls-3" points="426.45 518.57 518.56 518.57 518.56 262.03 426.45 354.15 426.45 518.57"/><polygon class="cls-4" points="518.56 196.89 453.43 196.89 196.91 453.44 196.91 518.58 262.04 518.58 518.56 262.03 518.56 196.89"/></g></svg>
-                </a>
-                <!-- <a class="navbar-brand" href="#about">
-                    <img alt="Nick Rios" class="navbar-brand" src="img/marina_marques_logo.png">
-                </a> -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ResponsiveNav">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="ResponsiveNav">
-                <ul class="nav navbar-nav">
-                    <li><a href="#about-me" class="page-scroll">ABOUT</a></li>
-                    <li><a href="#experience" class="page-scroll">EXPERIENCE</a></li>
-                   <!-- <li><a href="#services" class="page-scroll">SERVICES</a></li>
-                    <li><a href="#appearances" class="page-scroll">APPEARANCES</a></li> -->
-                    <li><a href="#contact" class="page-scroll">CONTACT</a></li>
-                </ul>
-            </div>
-            <!-- end collapse -->
-        </div>
-        <!-- end container fluid -->
+    <a href="javascript:" id="return-to-top"><span class="fas fa-arrow-up"></span></a>
+
+    <!-- Navigation -->
+    <nav class="topnav">
+        <a href="#" class="topnav-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 718.58 718.58" enable-background="new 0 0 425.8 425.8">
+                <circle fill="rgba(255,255,255,0.15)" cx="362.9" cy="362.9" r="278.8" />
+                <g fill="#fff">
+                    <polygon points="289.02 196.89 196.91 196.89 196.91 453.43 289.02 361.31 289.02 196.89" />
+                    <polygon points="426.45 518.57 518.56 518.57 518.56 262.03 426.45 354.15 426.45 518.57" />
+                    <polygon
+                        points="518.56 196.89 453.43 196.89 196.91 453.44 196.91 518.58 262.04 518.58 518.56 262.03 518.56 196.89" />
+                </g>
+            </svg>
+            Nick Rios
+        </a>
+        <button class="topnav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="topnav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-    <!-- end navigation -->
-    <!-- intro header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <!-- start typer hello  -->
-                        <div class="brand-heading">
-                            <span class="txt-rotate" data-period="100" data-rotate='[ "Hello,", "你好,", "Hola," ]'></span>
-                        </div>
-                        <!-- end typer hello -->
-                        <p class="intro-text">my name is Nick Rios.
-                            <br> I'm a <strong>Solution Architect</strong> based in the beautiful city of <span class="city">San Francisco</span>, CA.</p>
-                        <!-- start mouse wrap -->
-                        <div class="mouse-warp">
-                            <a href="#mouse-here" class="page-scroll">
-                                <div class="mouse">
-                                    <div class="scroll"></div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- end mouse wrap -->
-                    </div>
-                    <!-- end column wrapping -->
-                </div>
-                <!-- end row header -->
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-body">
+            <div class="hero-greeting">
+                <span class="txt-rotate" data-period="100" data-rotate='["Hello,", "你好,", "Hola,"]'></span>
             </div>
-            <!-- end container header -->
+            <h1 class="hero-name">I'm Nick Rios.</h1>
+            <p class="hero-sub">
+                Solution Architect &amp; AI Enthusiast <br> based out of Oahu
+            </p>
+            <div class="hero-ctas">
+                <a href="project.html" class="btn-primary-teal">
+                    <span class="fas fa-arrow-right"></span> View Projects
+                </a>
+                <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" rel="noopener"
+                    class="btn-outline-teal">
+                    <span class="fab fa-linkedin"></span> LinkedIn
+                </a>
+            </div>
+            <div class="scroll-hint">
+                <div class="mouse">
+                    <div class="scroll"></div>
+                </div>
+            </div>
         </div>
-        <!-- end intro body -->
     </header>
-    <!-- end intro header -->
-    <div id="mouse-here"></div>
-    <!-- only for mouse to fall before the start of the section -->
-    <!-- start about me -->
-    <section id="about-me">
-        <div class="container">
-            <div class="row">
-                <h2>ABOUT</h2>
-                <div class="col-lg-6 about-intro">
-                    <div class="about-inner">
-                        <div class="about-ct">
-                            <img src="static/images/hanoi.jpg" alt="Nick Rios" class="img-responsive">
-                            <div class="textbox-about hidden-xs">
-                                <div class="btn button-social">
-                                    <!-- <a href="http://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fab fa-codepen" aria-hidden="true"></span></a> -->
-                                    <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" alt="LinkedIn profile" target="_blank"><span class="fab fa-linkedin" aria-hidden="true"></span></a>
-                                    <a href="https://www.fiverr.com/nicolasrios272" target="_blank" alt="Fiverr profile"><span class="fa fa-user-circle" aria-hidden="true"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 about-intro-text">
-                    <p>As a <span>Solution Architect</span> (fancy name for tech Swiss army knife), I'm passionate about designing and implementing innovative solutions that have real impact.
-                        <br><br> My favorite work experiences have given me the opportunitity to collaborate with people in all walks of life - tackling challenges and constantly adapting to new technologies and approaches. From streamlining business operations by improving site reliability and speed, increasing engagement and sales by leveraging new technologies, or saving time and resources by introducing automation, seeing the impact of my work on a company's success provides such an incredible feeling of accomplishment. 
-                        <br><br> Here's to doing work you can stand behind! <span class="fas fa-beer" aria-hidden="true"></span></p>
-                    <div class="button-group">
-                        <div class="text">Download CV</div>
-                        <div class="icon-cv"><a href="static/assets/Nick-Rios-Resume.pdf" alt="Nick Rios CV" target="_blank" download="Nick-Rios-Resume.pdf"><span class="fas fa-arrow-circle-down" aria-hidden="true"></span></a></div>
-                    </div>
-                </div>
-            </div>
-            <!-- end row about -->
-        </div>
-        <!-- end container about -->
-        <!-- start count stats -->
-        <section id="counter-stats">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 stats">
-                        <span class="fas fa-code" aria-hidden="true"></span>
-                        <div class="counter" data-count="900000">0</div>
-                        <h5>Lines of code</h5>
-                    </div>
-                    <div class="col-lg-3 stats">
-                        <span class="fas fa-check" aria-hidden="true"></span>
-                        <div class="counter" data-count="127">0</div>
-                        <h5>Projects done</h5>
-                    </div>
-                    <div class="col-lg-3 stats">
-                        <span class="fas fa-user" aria-hidden="true"></span>
-                        <div class="counter" data-count="49">0</div>
-                        <h5>Happy clients</h5>
-                    </div>
-                    <div class="col-lg-3 stats">
-                        <span class="fas fa-coffee" aria-hidden="true"></span>
-                        <div class="counter" data-count="999">0</div>
-                        <h5>Cups of coffee</h5>
-                    </div>
-                </div>
-                <!-- end row counter stats -->
-            </div>
-            <!-- end container counter stats -->
-        </section>
-        <!-- end cont stats -->
-    </section>
-    <!-- end about me -->
-    <!-- start work experience -->
-    <section id="experience">
-        <div class="container">
-            <h2>EXPERIENCE</h2>
-            <div class="experience-ct">
-                <div class="row">
-                    <div class="col-md-6 timeline-label">
-                        <h4>key areas</h4>
-                        <p>Web Development, Deploying Containerized Applications, API and Database Integrations.</p>
-                        <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" alt="LinkedIn profile" target="_blank">
-                            <div class="button-group-li">
-                                <div class="text-timeline">View on LinkedIn</div>
-                                <div class="icon-li"><span class="fab fa-linkedin" aria-hidden="true"></span></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 timeline col-exp">
-                        <div class="timeline-year">
-                            <time datetime="2023">2023</time>
-                            <div class="timeline-experience">
-                                <span class="timeline-circle"></span>
-                                <div class="timeline-experience-img"><img src="static/images/tonic-logo.png" alt="Tonic.ai"></div>
-                                <div class="timeline-experience-info clear-after">
-                                    <h5>Tonic.ai</h5>
-                                    <div class="timeline-role">Solution Architect</div>
-                                    <p>May 2022 - Present</p>
-                                </div>
-                                <!-- experience-info -->
-                            </div>
 
-                            <!-- experience -->
-                        </div>
-                        <!-- year -->
-                        <div class="timeline-year timeline-year1">
-                            <time datetime="2021">2021</time>
-                            <div class="timeline-experience">
-                                <span class="timeline-circle"></span>
-                                <div class="timeline-experience-img"><img src="static/images/clearbit-logo.png" alt="Clearbit"></div>
-                                <div class="timeline-experience-info clear-after">
-                                    <h5>Clearbit</h5>
-                                    <div class="timeline-role">Senior Technical Support Engineer</div>
-                                    <p>January 2021 - May 2022</p>
-                                </div>
-                                <!-- experience-info -->
-                            </div>
-                            
-                            <!-- experience -->
-                            <time datetime="2019">2019</time>
-                            <div class="timeline-experience">
-                                <span class="timeline-circle"></span>
-                                <div class="timeline-experience-img"><img src="static/images/talkdesk-logo.png" alt="Talkdesk"></div>
-                                <div class="timeline-experience-info clear-after">
-                                    <h5>Talkdesk</h5>
-                                    <div class="timeline-role">Integrations Engineer</div>
-                                    <p>July 2019 - January 2021</p>
-                                </div>
-                                <!-- experience-info -->
-                            </div>
-                            <!-- experience -->
-                        </div>
-                         <!-- experience -->
-                            <time datetime="2015">2015</time>
-                            <div class="timeline-experience">
-                                <span class="timeline-circle"></span>
-                                <div class="timeline-experience-img"><img src="static/images/ucla-logo.png" alt="UCLA"></div>
-                                <div class="timeline-experience-info clear-after">
-                                    <h5>UCLA</h5>
-                                    <div class="timeline-role">Student - Electrical and Computer Engineering</div>
-                                    <p>August 2015 - June 2019</p>
-                                </div>
-                                <!-- experience-info -->
-                            </div>
-                            <!-- experience -->
-                        </div>
-                        <!-- year -->
-                    </div>
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="container-sm">
+            <h2>About</h2>
+            <div class="about-grid">
+                <div>
+                    <img src="static/images/nick-rios.jpg" alt="Nick Rios" class="about-photo">
                 </div>
-                <!-- end row of two columns -->
+                <div class="about-text">
+                    <h3 class="about-tagline">Bridging the gap between engineering and impact.</h3>
+                    <p>I'm a <em>Solution Architect</em> with 7+ years building things that matter to all types of
+                        audiences — from API integrations and cloud-native architectures for securing Australian
+                        classified documents to data pipelines and developer tooling for enterprise financial
+                        institutions in Texas.</p>
+                    <p>Right now I'm building <em>Spectre AI</em> — an AI-powered API mock proxy that learns from real
+                        traffic so developers can stop writing test fixtures by hand.</p>
+                </div>
             </div>
-            <!-- end experience container of two columns -->
         </div>
-        <!-- end container experience -->
     </section>
-    <!-- end work experience -->
-    <!-- start work portfolio -->
-    <section id="portfolio">
-        <div class="container-fluid portfolio-ct">
-            <h2>Strengths</h2>
-            <div class="row">
-                <!-- start portfolio item -->
-                <div class="col-sm-6 col-md-4 grid-portfolio">
-                    <div class="portfolio-item-ct">
-                        <div class="thumbnail">
-                            <img src="static/images/cloud.jpg" alt="Portfolio" class="img-responsive">
-                            <div class="textbox-portfolio">
-                                <!-- <div class="button-weblink">
-                                    <a  alt="Portfolio"><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
-                                </div> --> 
-                            </div>
-                        </div>
-                        <div class="caption portfolio-details">
-                            <h3>Cloud Services</h3>
-                            <p>I help businesses securely store and access <br>
-                                their data and applications on the cloud.
-                            </p>
-                            <ul class="portfolio-tags">
-                                <li class="portfolio-tag">AWS, AZURE, & GCP</li>
-                                <li class="portfolio-tag">CONTAINERS</li>
-                                <li class="portfolio-tag">CI/CD</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- end portfolio item -->
-                <!-- start portfolio item -->
-                <div class="col-sm-6 col-md-4 grid-portfolio">
-                    <div class="portfolio-item-ct">
-                        <div class="thumbnail">
-                            <img src="static/images/webdev.jpg" alt="Portfolio" class="img-responsive">
-                            <div class="textbox-portfolio">
-                                <!-- <div class="button-weblink">
-                                    <a  alt="Portfolio "><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="caption portfolio-details">
-                            <h3>Web Development</h3>
-                            <p>Creating and designing custom websites, <br>
-                                middleware and integrations for seamless UX</p>
-                            <ul class="portfolio-tags">
-                                <li class="portfolio-tag">JAVASCRIPT</li>
-                                <li class="portfolio-tag">PYTHON</li>
-                                <li class="portfolio-tag">JAVA</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- end portfolio item -->
-                <!-- start portfolio item -->
-                <div class="col-sm-6 col-md-4 grid-portfolio">
-                    <div class="portfolio-item-ct">
-                        <div class="thumbnail">
-                            <img src="static/images/integrate.jpg" alt="Portfolio" class="img-responsive">
-                            <div class="textbox-portfolio">
-                               <!--  <div class="button-weblink">
-                                    <a  alt="Portfolio"><span class="fas fa-link portfolio-link" aria-hidden="true"></span></a>
-                                </div> --> 
-                            </div>
-                        </div>
-                        <div class="caption portfolio-details">
-                            <h3>Automation and Integration</h3>
-                            <p>Experience with workflow optimization, database <br>integrations and many major software platforms.
-                            </p>
-                            <ul class="portfolio-tags">
-                                <li class="portfolio-tag">CRM</li>
-                                <li class="portfolio-tag">ETL</li>
-                                <li class="portfolio-tag">ODBC</li>
-                                <li class="portfolio-tag">APIs</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- end portfolio item -->
 
-        </div>
-        <!-- end container portfolio -->
-    </section>
-    <!-- end work portfolio -->
-    <!-- start services -->
-   <!-- <section id="services">
-        <div class="container">
-            <h2>WHAT DO YOU NEED?</h2>
-            <div class="row"> -->
-                <!-- <div class="ct-services">
-                    <div class="col-md-4 services-item">
-                        <div class="rotate">
-                            <span class="fas fa-code" aria-hidden="true"></span>
+    <!-- Experience + Stack -->
+    <section id="experience" class="section alt">
+        <div class="container-sm">
+            <h2>Experience</h2>
+            <div class="exp-stack-grid">
+
+                <!-- Experience -->
+                <div class="exp-col">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <img src="static/images/tonic-logo.png" alt="Tonic.ai" class="timeline-logo">
+                            <p class="timeline-company">Tonic.ai</p>
+                            <p class="timeline-role">Solutions Architect → Senior Solutions Architect</p>
+                            <p class="timeline-date">May 2022 – Present</p>
                         </div>
-                        <h3>Web Development</h3>
-                        <p>Development of responsive websites, cross-browser and cross-platform testing.</p>
-                    </div>
-                    <div class="col-md-4 services-item">
-                        <div class="rotate">
-                            <span class="fab fa-wordpress fa-wrapper" aria-hidden="true"></span>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <img src="static/images/clearbit-logo.png" alt="Clearbit" class="timeline-logo">
+                            <p class="timeline-company">Clearbit (now HubSpot)</p>
+                            <p class="timeline-role">Senior Technical Support Engineer</p>
+                            <p class="timeline-date">January 2021 – May 2022</p>
                         </div>
-                        <h3>Wordpress Development</h3>
-                        <p>Custom development (website, theme & plugin), hosting and maintenance.</p>
-                    </div>
-                    <div class="col-md-4 services-item">
-                        <div class="rotate">
-                            <span class="fas fa-chart-line" aria-hidden="true"></span>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <img src="static/images/talkdesk-logo.png" alt="Talkdesk" class="timeline-logo">
+                            <p class="timeline-company">Talkdesk</p>
+                            <p class="timeline-role">Integrations / Expert Services Engineer</p>
+                            <p class="timeline-date">July 2019 – January 2021</p>
                         </div>
-                        <h3>Search Engine Optimization</h3>
-                        <p>Increase your visibility across all major search engines & local search with SEO techniques.</p>
-                    </div>
-                </div> -->
-                <!-- end row of services -->
-           <!--  </div> -->
-            <!-- end row services section -->
-       <!--  </div> -->
-        <!-- end div services section -->
-    <!-- </section> -->
-    <!-- end services -->
-    <!-- start appearances -->
-    <!--
-    <section id="appearances">
-        <div class="container-fluid appearances-ct">
-            <h2>APPEARANCES</h2>
-            <div class="row">
-            -->
-                <!-- start appearance item -->
-                <!--
-                <div class="col-sm-6 col-md-4 grid-appearances">
-                    <div class="appearances-item-ct">
-                        <div class="thumbnail">
-                            <img src="img/marina_marques_flag.png" alt="Success Case - FLAG Lisboa" class="img-responsive">
-                            <div class="textbox-appearances js-flag">
-                                <div id="video" class="lightbox">
-                                    <div class="lightbox-container">
-                                        <div class="lightbox-content">
-                                            <div class="video-container">
-                                                <iframe id="youtube" width="960" height="540" src="https://www.tonic.ai/blog/how-to-choose-a-service-on-amazon-web-services-aws" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="caption appearances-details">
-                            <h3>SUCCESS CASE - FLAG</h3>
-                            <p>I was invited by FLAG (the school where I finished my Web and Mobile Development course with an average of 18(/20)) to take part in their publicity campaign.</p>
-                            <p>The campaign was focused on success cases - print (outdoors in the Lisbon subway) and digital (video).</p>
-                            <p>I was chosen to give my testimonial regarding my experience as a front-end developer.</p>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <img src="static/images/ucla-logo.png" alt="UCLA" class="timeline-logo">
+                            <p class="timeline-company">UCLA</p>
+                            <p class="timeline-role">B.S. Electrical &amp; Computer Engineering</p>
+                            <p class="timeline-date">August 2015 – June 2019</p>
                         </div>
                     </div>
                 </div>
-            -->
-                <!-- end appearance item -->
-                <!-- start appearance item -->
-                <!--
-                <div class="col-sm-6 col-md-4 grid-appearances">
-                    <div class="appearances-item-ct">
-                        <div class="thumbnail">
-                            <img src="img/marina_marques_sherpany.png" alt="What is your passion? Sherpany" class="img-responsive">
-                            <div class="textbox-appearances js-sherpany">
-                                <div id="video" class="lightbox">
-                                    <div class="lightbox-container">
-                                        <div class="lightbox-content">
-                                            <div class="video-container">
-                                                <iframe id="youtubeSherpany" width="960" height="540" src="https://www.youtube.com/embed/sBWMtmqGkIQ?start=143" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                <!-- Stack -->
+                <div class="exp-col">
+                    <div class="stack-categories">
+                        <div>
+                            <p class="stack-cat-label">Languages</p>
+                            <div class="stack-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Java</span>
+                                <span class="tag">Rust</span>
+                                <span class="tag">C++</span>
+                                <span class="tag">HTML &amp; CSS</span>
                             </div>
                         </div>
-                        <div class="caption appearances-details">
-                            <h3>WHAT IS YOUR PASSION? - SHERPANY</h3>
-                            <p>I was invited by Sherpany to give my feedback on how it feels to be a part of this family.</p>
+                        <div>
+                            <p class="stack-cat-label">Cloud &amp; Infra</p>
+                            <div class="stack-tags">
+                                <span class="tag">AWS</span>
+                                <span class="tag">GCP</span>
+                                <span class="tag">Azure</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Kubernetes</span>
+                                <span class="tag">CI/CD</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="stack-cat-label">Frameworks &amp; Platforms</p>
+                            <div class="stack-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Axum</span>
+                                <span class="tag">Tailwind</span>
+                                <span class="tag">Salesforce</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="stack-cat-label">Data &amp; Integrations</p>
+                            <div class="stack-tags">
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">REST APIs</span>
+                                <span class="tag">CRM</span>
+                                <span class="tag">CDP</span>
+                                <span class="tag">ETL</span>
+                                <span class="tag">ODBC</span>
+                                <span class="tag">Prometheus</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="stack-cat-label">Certifications</p>
+                            <div class="stack-tags">
+                                <span class="tag">AWS Cloud Practitioner</span>
+                                <span class="tag">Google IT Support</span>
+                                <span class="tag">AWS Containerized Apps</span>
+                            </div>
                         </div>
                     </div>
-                </div> -->
-                <!-- end appearance item -->
-                <!-- start appearance item -->
-                <!--
-                <div class="col-sm-6 col-md-4 grid-appearances">
-                    <div class="appearances-item-ct">
-                        <div class="thumbnail">
-                            <a href="https://www.flag.pt/webcast/flagtalks-ssoas-da-casa-ep12-com-marina-marques/" target="_blank"><img src="img/marina_marques_flag_talks.png" alt="FLAGTALKS ´SSOAS DA CASA" class="img-responsive"></a>
-                        </div>
-                        <div class="caption appearances-details">
-                            <h3>FLAGTALKS - ´SSOAS DA CASA</h3>
-                            <p>I was invited by FLAG to share my experience as a student in one of their courses and to discuss the necessary skills to thrive as a front-end developer.</p>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- end appearance item -->
-                <!--
-            </div>
-        -->
-            <!-- end row appearances -->
-            <!--
-        </div>
-    -->
-        <!-- end container appearances -->
-        <!--
-    </section>
--->
-    <!-- end appearances -->
-    <!-- start testimionals -->
-    <section id="testimionals">
-        <div class="testimionals-bg">
-            <div class="container testimionals-bg-opacity">
-                <h2>WHAT ASSOCIATES HAVE SAID</h2>
-                <div><span class="fas fa-quote-left quotes" aria-hidden="true"></span>
                 </div>
-                <div id="slider-testimionals" class="carousel slide" data-ride="carousel">
-                    <!-- indicators dot nav -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#slider-testimionals" data-slide-to="0" class="active"></li>
-                        <li data-target="#slider-testimionals" data-slide-to="1"></li>
-                        <li data-target="#slider-testimionals" data-slide-to="2"></li>
-                        <li data-target="#slider-testimionals" data-slide-to="3"></li>
-                    </ol>
-                    <!-- wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <!-- start first testimional -->
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="carousel-caption">
-                                        <p>Nick is a gem! He's always ready to hop on a call and resolve my problems in record time.</p>
-                                        <p class="client">Sandra, DevOps department - Client</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end first testimional -->
-                        <!-- start second testimional -->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="carousel-caption">
-                                        <p>Quick as lightning with robust solutions.</p>
-                                        <p class="client">Adam, Solutions department - Box</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end second testimional -->
-                        <!-- start third testimional -->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="carousel-caption">
-                                        <p>He shows real commitment and demonstrates entrepreneurship skills as well as innovation abilities.</p>
-                                        <p class="client">Previn, Engineering department - Cisco</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end third testimional -->
-                        <!-- start fourth and last testimional -->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="carousel-caption">
-                                        <p>He doesn't give up until he finds a solution for what seems to be impossible.</p>
-                                        <p class="client">Kevin, Manager - Talkdesk</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end fourth and last testimional -->
-                    </div>
-                    <!-- end carousel -->
-                </div>
-                <!-- end slider bootstrap -->
+
             </div>
         </div>
-        <!-- end div container testimionals -->
     </section>
-    <!-- end testimionals -->
-    <!-- start footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="row">
-                <h2>CONTACT</h2>
-                <p class="js-email" data-tooltip="Click to copy to clipboard!">You can contact me at: <span>n.rios1997@gmail.com</span></p>
-                <br>
-                <div class="social">
-                   <!--  <a href="http://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fab fa-codepen" aria-hidden="true"></span></a> -->
-                    <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" alt="LinkedIn profile"><span class="fab fa-linkedin" aria-hidden="true" </i> </a> <a href="https://www.fiverr.com/nicolasrios272" target="_blank" alt="Fiverr profile"><span class="fa fa-user-circle" aria-hidden="true"></span></a> 
+
+    <!-- Runbooks -->
+    <section class="section">
+        <div class="container-sm">
+            <h2>Runbooks</h2>
+            <div class="runbooks-grid">
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-cloud-upload-alt"></span>
+                    <h4>Cloud Migration</h4>
+                    <p>End-to-end lift-and-shift and re-architecture playbooks for moving workloads to AWS. Includes pre-migration audits, VPC setup, and cutover runbooks.</p>
                 </div>
-                <p id="copyright"></p>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-code-branch"></span>
+                    <h4>Infrastructure as Code</h4>
+                    <p>CI/CD pipeline design and container orchestration with Docker and Kubernetes. Repeatable environment provisioning from dev through production.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-plug"></span>
+                    <h4>API Integration</h4>
+                    <p>Custom middleware and REST API integration patterns across CRM, CDP, and third-party platforms. Includes Salesforce Lightning and Talkdesk connector builds.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-database"></span>
+                    <h4>Data Pipeline Design</h4>
+                    <p>ETL and ODBC pipeline architecture for enterprise data flows. Data quality, transformation logic, and schema migration strategies across relational databases.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-flask"></span>
+                    <h4>Demo Engineering</h4>
+                    <p>Sandbox environment builds and case-study challenges for pre-sales and training. Custom demo software tailored to customer business values and deal verticals.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-chalkboard-teacher"></span>
+                    <h4>Technical Enablement</h4>
+                    <p>Implementation methodologies and training programs for professional services teams. Reusable content that cut helpdesk response and resolution times by over 50%.</p>
+                </div>
             </div>
-            <!-- end row contact -->
         </div>
-        <!-- end container footer section -->
+    </section>
+
+    <!-- Projects -->
+    <section class="section alt">
+        <div class="container-sm">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <div class="project-card-visual">👻</div>
+                <div class="project-card-body">
+                    <p class="project-card-tag">In Development &mdash; 2024</p>
+                    <h3 class="project-card-title">Spectre AI</h3>
+                    <p class="project-card-desc">An AI-powered API mock proxy that records real traffic and replays it
+                        as deterministic mocks — with a fine-tuned model stepping in when coverage runs out.</p>
+                    <div class="project-card-chips">
+                        <span class="chip">Rust</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">FastAPI</span>
+                        <span class="chip">Next.js</span>
+                    </div>
+                    <a href="project.html" class="btn-card-link">
+                        View project <span class="fas fa-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="testimonials-overlay">
+            <div class="container-sm">
+                <h2>What people say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <span class="quote-icon fas fa-quote-left"></span>
+                        <p>Nick is a gem! He's always ready to hop on a call and resolve problems in record time.</p>
+                        <span class="attribution">Sandra — DevOps, Client</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-icon fas fa-quote-left"></span>
+                        <p>He shows real commitment and demonstrates entrepreneurship skills as well as innovation
+                            abilities.</p>
+                        <span class="attribution">Previn — Engineering, Cisco</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-icon fas fa-quote-left"></span>
+                        <p>He doesn't give up until he finds a solution for what seems impossible.</p>
+                        <span class="attribution">Kevin — Manager, Talkdesk</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-icon fas fa-quote-left"></span>
+                        <p>Quick as lightning with robust solutions.</p>
+                        <span class="attribution">Adam — Solutions, Box</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="footer-section">
+        <div class="container-sm">
+            <h2>Get in touch</h2>
+            <a href="mailto:n.rios.1997@gmail.com" class="footer-email">n.rios.1997@gmail.com</a>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" rel="noopener"
+                    title="LinkedIn">
+                    <span class="fab fa-linkedin"></span>
+                </a>
+                <a href="mailto:n.rios.1997@gmail.com" title="Email">
+                    <span class="fas fa-envelope"></span>
+                </a>
+            </div>
+            <p class="footer-copy">&copy; <span id="year"></span> Nick Rios &mdash; Oahu, Hawaii</p>
+        </div>
     </footer>
-    <!-- end footer -->
+
     <script src="static/js/jquery-3.1.1.min.js"></script>
     <script src="static/js/jquery.easing.min.js"></script>
-
     <script src="static/js/script.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-   <!-- Start Bouncy Logo -->
 
-   <script>
-
-        jQuery.noConflict();
-        (function($) {
-            $(window).on('load', function() { // makes sure the whole site is loaded
-                $('#myLogo').bind('mouseover', function(event) {
-                    var $anchor = $(this);
-                    var classString = 'animating squish single-iteration';
-                    $anchor.addClass(classString);
-
-                });
-                $('#myLogo').bind('mouseout', function(event) {
-                    var $anchor = $(this);
-                    var classString = 'animating squish single-iteration';
-                    $anchor.removeClass(classString);
-
-                });
+    <script>
+        // Mobile nav toggle
+        document.getElementById('navToggle').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('open');
         });
-    })(jQuery);
-  
-    </script>
-     <!-- END BOUNCY LOGO -->
-    <!-- Preloader -->
-    <script type="text/javascript">
-    jQuery.noConflict();
-    (function($) {
-        $(window).on('load', function() { // makes sure the whole site is loaded
-            $('#status').fadeOut(); // will first fade out the loading animation
-            $('#preloader').delay(200).fadeOut('slow'); // will fade out the white DIV that covers the website.
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.topnav-links a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                document.getElementById('navLinks').classList.remove('open');
+            });
         });
-    })(jQuery);
-    </script>
-    <!-- end Preloader -->
-    <!-- hello typer start -->
-    <script type="text/javascript">
-    window.onload = function() {
-        var elements = document.getElementsByClassName('txt-rotate');
-        for (var i = 0; i < elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-rotate');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+
+        // Smooth scroll for hash links
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    var offset = target.getBoundingClientRect().top + window.scrollY - 68;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Return to top
+        window.addEventListener('scroll', function () {
+            var btn = document.getElementById('return-to-top');
+            btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        document.getElementById('return-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Txt rotate
+        window.onload = function () {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) new TxtRotate(elements[i], JSON.parse(toRotate), period);
             }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".txt-rotate > .wrap { border-right: 10px solid #40E0D0 }";
-        document.body.appendChild(css);
-    };
+            var css = document.createElement('style');
+            css.innerHTML = '.txt-rotate > .wrap { border-right: 8px solid #40E0D0 }';
+            document.body.appendChild(css);
+        };
     </script>
-    
-    <!-- hello typer end -->
 
 </body>
 
