@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Spectre AI — Stop writing mocks by hand.</title>
+    <meta name="description" content="Spectre AI is a drop-in proxy that learns your API from real traffic and mocks it automatically — so your tests never break on missing coverage.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="static/images/favicon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700;900&display=swap">
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #fff; }
+
+        /* ── Topnav ── */
+        .topnav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            height: 60px; background: #008080;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px;
+        }
+        .topnav-brand {
+            display: flex; align-items: center; gap: 10px;
+            color: #fff; font-family: 'Montserrat', sans-serif;
+            font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+        .topnav-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+        .topnav-links {
+            display: flex; align-items: center; gap: 32px;
+            list-style: none; margin: 0; padding: 0;
+        }
+        .topnav-links a {
+            color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+            transition: color 0.2s; position: relative; padding-bottom: 4px;
+        }
+        .topnav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 0; height: 2px;
+            background: #40E0D0; transition: width 0.25s ease;
+        }
+        .topnav-links a:hover { color: #fff; }
+        .topnav-links a:hover::after,
+        .topnav-links a.active::after { width: 100%; }
+        .topnav-links a.active { color: #fff; }
+        .topnav-toggle {
+            display: none; background: none; border: none; cursor: pointer;
+            padding: 4px; flex-direction: column; gap: 5px;
+        }
+        .topnav-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+        @media (max-width: 767px) {
+            .topnav { padding: 0 20px; }
+            .topnav-toggle { display: flex; }
+            .topnav-links {
+                display: none; position: absolute; top: 60px; left: 0; right: 0;
+                background: #006666; flex-direction: column; gap: 0; padding: 8px 0;
+            }
+            .topnav-links.open { display: flex; }
+            .topnav-links li { width: 100%; }
+            .topnav-links a { display: block; padding: 12px 24px; letter-spacing: 1px; }
+            .topnav-links a::after { display: none; }
+        }
+
+        /* ── Return to top ── */
+        #return-to-top {
+            position: fixed; bottom: 24px; right: 24px;
+            background: rgba(0,128,128,0.85); width: 44px; height: 44px;
+            border-radius: 50%; display: none; align-items: center;
+            justify-content: center; color: #fff; font-size: 16px;
+            z-index: 999; transition: background 0.2s ease; text-decoration: none;
+        }
+        #return-to-top:hover { background: #008080; }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(150deg, #0f172a 0%, #1e1b4b 55%, #3730a3 100%);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 100px 24px 60px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 60% 40%, rgba(129,140,248,0.18) 0%, transparent 70%);
+        }
+        .hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.9);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+            text-transform: uppercase; padding: 6px 18px; border-radius: 20px;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(42px, 7vw, 80px);
+            font-weight: 900; color: #fff;
+            line-height: 1.05; margin: 0 0 12px;
+            letter-spacing: -2px;
+        }
+        .ghost-icon { width: 1.15em; height: 1.15em; vertical-align: middle; margin-right: 10px; position: relative; top: -0.06em; color: #818cf8; display: inline-block; }
+        .ghost-icon-lg { width: 100px; height: 100px; display: block; margin: 0 auto 24px; color: #818cf8; }
+        .hero .hero-sub {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: rgba(255,255,255,0.82);
+            line-height: 1.55; margin: 0 auto 40px;
+            max-width: 600px;
+        }
+        .hero-ctas {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+        }
+        .btn-hero-primary {
+            background: #fff; color: #4338ca;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+            padding: 14px 32px; border-radius: 4px;
+            text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); color: #3730a3; }
+        .btn-hero-outline {
+            background: transparent; color: #fff;
+            border: 2px solid rgba(255,255,255,0.5);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+            padding: 12px 32px; border-radius: 4px;
+            text-decoration: none; transition: border-color 0.2s, background 0.2s;
+        }
+        .btn-hero-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); color: #fff; }
+        .hero-scroll {
+            position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.5); font-size: 22px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── Problem ── */
+        .problem-section {
+            padding: 100px 0;
+            background: #fafefe;
+        }
+        .problem-section .section-label {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: #818cf8;
+            margin-bottom: 16px;
+        }
+        .problem-section h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900; color: #1a1a1a;
+            margin: 0 auto 20px; max-width: 640px;
+            line-height: 1.2;
+        }
+        .problem-section .lead {
+            text-align: center;
+            font-size: 17px; color: #555; line-height: 1.7;
+            max-width: 580px; margin: 0 auto 60px;
+        }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .pain-card {
+            background: #fff;
+            border: 1px solid #e8f5f5;
+            border-radius: 8px;
+            padding: 28px 24px;
+            box-shadow: 0 2px 12px rgba(0,128,128,0.05);
+        }
+        .pain-card .pain-icon {
+            font-size: 28px;
+            color: #ccc;
+            margin-bottom: 14px;
+        }
+        .pain-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px; font-weight: 700;
+            color: #1a1a1a; margin: 0 0 8px;
+        }
+        .pain-card p {
+            font-size: 14px; color: #666; line-height: 1.6; margin: 0;
+        }
+
+        /* ── How it works ── */
+        .how-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .how-section .section-label {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: #818cf8;
+            margin-bottom: 16px;
+        }
+        .how-section h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900; color: #1a1a1a;
+            margin: 0 auto 60px; max-width: 560px;
+            line-height: 1.2;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
+            position: relative;
+        }
+        .step {
+            text-align: center;
+            padding: 0 32px 40px;
+            position: relative;
+        }
+        .step::after {
+            content: '';
+            position: absolute; top: 28px; right: -1px;
+            width: 2px; height: 40px;
+            background: linear-gradient(to bottom, #818cf8, transparent);
+        }
+        .step:last-child::after { display: none; }
+        .step-num {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, #4338ca, #818cf8);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px; font-weight: 900; color: #fff;
+        }
+        .step h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17px; font-weight: 700;
+            color: #4f46e5; margin: 0 0 10px;
+        }
+        .step p {
+            font-size: 14px; color: #666; line-height: 1.6; margin: 0;
+        }
+
+        /* ── Value props ── */
+        .value-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 100%);
+            color: #fff;
+        }
+        .value-section .section-label {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: #818cf8;
+            margin-bottom: 16px;
+        }
+        .value-section h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900; color: #fff;
+            margin: 0 auto 60px; max-width: 560px;
+            line-height: 1.2;
+        }
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 32px 28px;
+            backdrop-filter: blur(4px);
+        }
+        .value-card .v-icon {
+            font-size: 32px;
+            color: #a5b4fc;
+            margin-bottom: 16px;
+        }
+        .value-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17px; font-weight: 700;
+            color: #fff; margin: 0 0 10px;
+        }
+        .value-card p {
+            font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 100px 24px;
+            text-align: center;
+            background: #fafefe;
+        }
+        .cta-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900; color: #1a1a1a;
+            margin: 0 auto 16px; max-width: 580px; line-height: 1.2;
+        }
+        .cta-section p {
+            font-size: 17px; color: #555; line-height: 1.7;
+            max-width: 480px; margin: 0 auto 40px;
+        }
+        .btn-cta {
+            display: inline-block;
+            background: #4f46e5; color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+            padding: 16px 40px; border-radius: 4px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(79,70,229,0.35);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-cta:hover { background: #4338ca; transform: translateY(-2px); color: #fff; }
+
+        /* ── Footer ── */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 40px 24px;
+            font-size: 13px;
+        }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #40E0D0; }
+        .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .footer-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px; font-weight: 700; letter-spacing: 1px;
+            text-transform: uppercase; text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-back:hover { color: #40E0D0; }
+
+        /* ── Social ── */
+        .social a {
+            font-size: 22px; color: rgba(255,255,255,0.5);
+            margin: 0 8px; transition: color 0.2s;
+        }
+        .social a:hover { color: #40E0D0; }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:" id="return-to-top"><span class="fas fa-arrow-up"></span></a>
+
+    <!-- Navigation -->
+    <nav class="topnav">
+        <a href="index.html" class="topnav-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 718.58 718.58" enable-background="new 0 0 425.8 425.8">
+                <circle fill="rgba(255,255,255,0.15)" cx="362.9" cy="362.9" r="278.8"/>
+                <g fill="#fff">
+                    <polygon points="289.02 196.89 196.91 196.89 196.91 453.43 289.02 361.31 289.02 196.89"/>
+                    <polygon points="426.45 518.57 518.56 518.57 518.56 262.03 426.45 354.15 426.45 518.57"/>
+                    <polygon points="518.56 196.89 453.43 196.89 196.91 453.44 196.91 518.58 262.04 518.58 518.56 262.03 518.56 196.89"/>
+                </g>
+            </svg>
+            Nick Rios
+        </a>
+        <button class="topnav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="topnav-links" id="navLinks">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="spectre.html" class="active">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">Now in development &mdash; Oahu, Hawaii</span>
+            <h1><i data-lucide="ghost" class="ghost-icon"></i> Spectre AI</h1>
+            <p class="hero-sub">
+                Your API, mocked automatically.<br>
+                Drop in a proxy. Let it learn. Never write test fixtures again.
+            </p>
+            <div class="hero-ctas">
+                <a href="mailto:n.rios1997@gmail.com?subject=Spectre AI — Early Access" class="btn-hero-primary">
+                    Request Early Access
+                </a>
+            </div>
+        </div>
+        <span class="hero-scroll fas fa-chevron-down"></span>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem-section">
+        <div class="container">
+            <p class="section-label">The Problem</p>
+            <h2>Mocks are a maintenance nightmare.</h2>
+            <p class="lead">
+                Every team writes the same brittle fixtures. They drift, they break, and when a new endpoint ships nobody updates them. Your CI turns red. Your sprint stops.
+            </p>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon"><span class="fas fa-file-code"></span></div>
+                    <h4>Hand-written fixtures</h4>
+                    <p>Hours spent crafting JSON stubs that are out of date before the PR is merged.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon"><span class="fas fa-unlink"></span></div>
+                    <h4>Mocks that lie</h4>
+                    <p>Tests pass locally against stale mocks. Production fails because the real API changed three weeks ago.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon"><span class="fas fa-exclamation-triangle"></span></div>
+                    <h4>Coverage gaps</h4>
+                    <p>Nobody mocks the edge cases. A missing 404 fixture takes down a flaky test suite at 2am.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon"><span class="fas fa-stopwatch"></span></div>
+                    <h4>Slow feedback loops</h4>
+                    <p>Calling real APIs in tests means slow, flaky pipelines that depend on third-party uptime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section">
+        <div class="container">
+            <p class="section-label">How it works</p>
+            <h2>Point. Learn. Mock.</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>Point Spectre at your API</h4>
+                    <p>Drop in a single proxy — no code changes, no SDK integrations. Your app keeps talking to the same address.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>It learns from real traffic</h4>
+                    <p>Every request and response is recorded automatically. The mock library builds itself from production-accurate data.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>Switch to mock mode</h4>
+                    <p>Flip a switch. Spectre replays your recorded traffic instantly — no network, no upstream dependencies.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4>AI fills the gaps</h4>
+                    <p>When a request has no recorded match, a fine-tuned model generates a realistic response on the fly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value props -->
+    <section class="value-section">
+        <div class="container">
+            <p class="section-label">Why Spectre</p>
+            <h2>Built for teams that ship fast.</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-rocket"></span></div>
+                    <h4>Zero setup overhead</h4>
+                    <p>One docker-compose file and you're running. No agents to instrument, no SDK to integrate, no YAML to wrestle.</p>
+                </div>
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-database"></span></div>
+                    <h4>Always production-accurate</h4>
+                    <p>Mocks are sourced from real traffic, not developer imagination. When the API changes, your recordings update with it.</p>
+                </div>
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-brain"></span></div>
+                    <h4>AI-powered coverage</h4>
+                    <p>A fine-tuned model handles edge cases you never thought to mock. No more failing tests on an unexpected 429.</p>
+                </div>
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-tachometer-alt"></span></div>
+                    <h4>Faster CI, full stop</h4>
+                    <p>Tests that called real APIs now respond in milliseconds. Pipelines that took 12 minutes finish in 90 seconds.</p>
+                </div>
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-code-branch"></span></div>
+                    <h4>Stateful flows, handled</h4>
+                    <p>Response sequences let you mock multi-step workflows — create, read, update, delete — without hacking around state.</p>
+                </div>
+                <div class="value-card">
+                    <div class="v-icon"><span class="fas fa-shield-alt"></span></div>
+                    <h4>Safe by default</h4>
+                    <p>Sensitive headers are redacted before anything is recorded. You control what gets stored, full stop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <i data-lucide="ghost" class="ghost-icon-lg"></i>
+        <h2>Interested in early access?</h2>
+        <p>Spectre AI is in active development. I'm looking for developer and QA teams who want to help shape the product.</p>
+        <a href="mailto:n.rios1997@gmail.com?subject=Spectre AI — Early Access" class="btn-cta">
+            Get in touch
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="footer-back">
+                <span class="fas fa-arrow-left"></span> Back to portfolio
+            </a>
+            <div class="social">
+                <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <span class="fab fa-linkedin"></span>
+                </a>
+            </div>
+            <p id="copyright"></p>
+        </div>
+    </footer>
+
+    <script src="static/js/jquery-3.1.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('return-to-top');
+            btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        document.getElementById('return-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        var c = document.getElementById('copyright');
+        if (c) c.textContent = '© ' + new Date().getFullYear() + ' Nick Rios';
+    </script>
+</body>
+
+</html>

@@ -8,6 +8,7 @@
     <meta name="description"
         content="Solution Architect based in Oahu, Hawaii. Building Spectre AI. Previously Tonic.ai, Clearbit, Talkdesk.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
     <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="static/images/favicon.png">
     <link rel="stylesheet"
@@ -378,7 +379,7 @@
 
         /* ── Sections shared ── */
         .section {
-            padding: 90px 0;
+            padding: clamp(48px, 8vw, 90px) 0;
         }
 
         .section.alt {
@@ -388,7 +389,7 @@
         .container-sm {
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 clamp(16px, 4vw, 40px);
         }
 
         @media (max-width: 767px) {
@@ -404,14 +405,14 @@
         /* ── About ── */
         .about-grid {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 48px;
+            grid-template-columns: min(200px, 28%) 1fr;
+            gap: clamp(24px, 4vw, 48px);
             align-items: start;
         }
 
         .about-tagline {
             font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
+            font-size: clamp(18px, 2.5vw, 22px);
             font-weight: 700;
             color: #1a1a1a;
             margin: 0 0 20px;
@@ -549,7 +550,7 @@
         }
 
         .exp-col {
-            padding: 48px;
+            padding: clamp(24px, 4vw, 48px);
         }
 
         /* ── Runbooks ── */
@@ -566,7 +567,7 @@
         .runbook-card {
             border: 1.5px solid #e8f8f7;
             border-radius: 4px;
-            padding: 28px 24px;
+            padding: clamp(16px, 2.5vw, 28px) clamp(14px, 2vw, 24px);
             background: #fff;
         }
 
@@ -641,18 +642,22 @@
         }
 
         .project-card-visual {
-            background: linear-gradient(135deg, #008080 0%, #40E0D0 100%);
+            background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 220px;
-            font-size: 80px;
-            padding: 40px;
+            min-height: clamp(160px, 18vw, 220px);
+            padding: clamp(20px, 4vw, 40px);
+            color: #818cf8;
+        }
+        .project-card-visual svg {
+            width: clamp(60px, 8vw, 100px);
+            height: clamp(60px, 8vw, 100px);
         }
 
         .project-card-body {
             background: #fff;
-            padding: 40px;
+            padding: clamp(24px, 4vw, 40px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -669,7 +674,7 @@
 
         .project-card-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
+            font-size: clamp(20px, 3vw, 28px);
             font-weight: 700;
             color: #1a1a1a;
             margin: 0 0 12px;
@@ -725,7 +730,7 @@
 
         .testimonials-overlay {
             background: rgba(0, 20, 30, 0.78);
-            padding: 90px 0;
+            padding: clamp(48px, 8vw, 90px) 0;
         }
 
         .testimonials-section h2 {
@@ -755,7 +760,7 @@
             background: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 4px;
-            padding: 28px;
+            padding: clamp(16px, 2.5vw, 28px);
             display: flex;
             flex-direction: column;
         }
@@ -784,7 +789,7 @@
 
         /* ── Contact / Footer ── */
         .footer-section {
-            padding: 80px 0 60px;
+            padding: clamp(40px, 7vw, 80px) 0 clamp(32px, 5vw, 60px);
             text-align: center;
             border-top: 1px solid #f0f0f0;
         }
@@ -794,7 +799,7 @@
         }
 
         .footer-email {
-            font-size: 24px;
+            font-size: clamp(16px, 2.5vw, 24px);
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             color: #1a1a1a;
@@ -834,15 +839,32 @@
         }
 
         @media (max-width: 900px) {
-            .exp-stack-grid {
-                grid-template-columns: 1fr;
-            }
+            .exp-stack-grid { grid-template-columns: 1fr; }
+            .exp-col { padding: 32px; }
         }
 
         @media (max-width: 767px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+            .about-grid { grid-template-columns: 1fr; gap: 24px; }
+            .about-photo { width: 140px; margin: 0 auto; }
+            .about-tagline { font-size: 19px; }
+            .exp-col { padding: 20px; }
+            .project-card-visual { min-height: 160px; padding: 24px; }
+            .project-card-visual svg { width: 70px; height: 70px; }
+            .project-card-body { padding: 24px; }
+            .project-card-title { font-size: 22px; }
+            .runbook-card { padding: 20px 18px; }
+            .footer-section { padding: 48px 0 36px; }
+            .footer-email { font-size: 18px; word-break: break-all; }
+            .footer-social { gap: 16px; }
+            .footer-social a { font-size: 20px; }
+            .testimonial-card { padding: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .runbooks-grid { grid-template-columns: 1fr; }
+            .hero-name { font-size: 30px; }
+            .hero-greeting { font-size: 48px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -872,7 +894,7 @@
         <ul class="topnav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="project.html">Projects</a></li>
+            <li><a href="spectre.html">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -888,7 +910,7 @@
                 Solution Architect &amp; AI Enthusiast <br> based out of Oahu
             </p>
             <div class="hero-ctas">
-                <a href="project.html" class="btn-primary-teal">
+                <a href="spectre.html" class="btn-primary-teal">
                     <span class="fas fa-arrow-right"></span> View Projects
                 </a>
                 <a href="https://www.linkedin.com/in/nicolas-rios-039038108/" target="_blank" rel="noopener"
@@ -1056,14 +1078,24 @@
                     <p>ETL and ODBC pipeline architecture for enterprise data flows. Data quality, transformation logic, and schema migration strategies across relational databases.</p>
                 </div>
                 <div class="runbook-card">
-                    <span class="runbook-icon fas fa-flask"></span>
-                    <h4>Demo Engineering</h4>
-                    <p>Sandbox environment builds and case-study challenges for pre-sales and training. Custom demo software tailored to customer business values and deal verticals.</p>
+                    <span class="runbook-icon fas fa-sitemap"></span>
+                    <h4>RAG Pipeline Architecture</h4>
+                    <p>Retrieval-augmented generation system design across vector stores, embedding strategies, chunking, and context management. Tuned for accuracy, latency, and cost at production scale.</p>
                 </div>
                 <div class="runbook-card">
                     <span class="runbook-icon fas fa-chalkboard-teacher"></span>
                     <h4>Technical Enablement</h4>
                     <p>Implementation methodologies and training programs for professional services teams. Reusable content that cut helpdesk response and resolution times by over 50%.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-sliders-h"></span>
+                    <h4>Prompt Engineering & Fine-tuning</h4>
+                    <p>Prompt template design, few-shot strategy, and PEFT/LoRA fine-tuning workflows for domain-specific LLMs. Dataset curation, iterative evaluation, and confidence calibration.</p>
+                </div>
+                <div class="runbook-card">
+                    <span class="runbook-icon fas fa-rocket"></span>
+                    <h4>Proof-of-Concept Delivery</h4>
+                    <p>Embedded customer engagements from technical discovery through production rollout. Rapid POC builds, stakeholder alignment, and custom integration development against live systems.</p>
                 </div>
             </div>
         </div>
@@ -1074,19 +1106,13 @@
         <div class="container-sm">
             <h2>Projects</h2>
             <div class="project-card">
-                <div class="project-card-visual">👻</div>
+                <div class="project-card-visual"><i data-lucide="ghost"></i></div>
                 <div class="project-card-body">
-                    <p class="project-card-tag">In Development &mdash; 2024</p>
+                    <p class="project-card-tag">In Development &mdash; 2026</p>
                     <h3 class="project-card-title">Spectre AI</h3>
                     <p class="project-card-desc">An AI-powered API mock proxy that records real traffic and replays it
                         as deterministic mocks — with a fine-tuned model stepping in when coverage runs out.</p>
-                    <div class="project-card-chips">
-                        <span class="chip">Rust</span>
-                        <span class="chip">Python</span>
-                        <span class="chip">FastAPI</span>
-                        <span class="chip">Next.js</span>
-                    </div>
-                    <a href="project.html" class="btn-card-link">
+<a href="spectre.html" class="btn-card-link">
                         View project <span class="fas fa-arrow-right"></span>
                     </a>
                 </div>
@@ -1148,6 +1174,10 @@
     <script src="static/js/jquery.easing.min.js"></script>
     <script src="static/js/script.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 
     <script>
         // Mobile nav toggle
